@@ -1,0 +1,6 @@
+C:\Duality\Source\Code\GameDebugger\bin\Debug\GameDebugger.exe
+C:\Duality\Source\Code\GameDebugger\bin\Debug\GameDebugger.pdb
+C:\Duality\Source\Code\GameDebugger\obj\Debug\GameDebugger.csprojAssemblyReference.cache
+C:\Duality\Source\Code\GameDebugger\obj\Debug\GameDebugger.csproj.CoreCompileInputs.cache
+C:\Duality\Source\Code\GameDebugger\obj\Debug\GameDebugger.exe
+C:\Duality\Source\Code\GameDebugger\obj\Debug\GameDebugger.pdb
