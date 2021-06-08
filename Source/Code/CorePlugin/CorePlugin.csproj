@@ -51,6 +51,8 @@
     <Compile Include="CameraController.cs" />
     <Compile Include="GameController.cs" />
     <Compile Include="Ground.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="VitalsTracker.cs" />
     <Compile Include="ScrollController.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

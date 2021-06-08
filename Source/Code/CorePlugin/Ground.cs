@@ -58,12 +58,12 @@ namespace Duality_
         void ICmpInitializable.OnActivate()
         {
             cameraController = camera.GetComponent<Camera>();
-            thisRB = this.GameObj.GetComponent<Rigidbody>();
+            thisRB = this.GameObj.GetComponent<RigidBody>();
         }
 
         void ICmpInitializable.OnDeactivate()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

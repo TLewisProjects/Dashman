@@ -13,7 +13,7 @@ namespace Duality_
     public class CameraController : Component, ICmpUpdatable, ICmpInitializable, ICmpCollisionListener
     {
         // Members
-        private bool playerInside = false;
+        private int playerInside = 0;
 
         private GameObject playerObjectInside;
         private float distanceTravelled = 0.0f;
@@ -37,15 +37,18 @@ namespace Duality_
 
         void ICmpUpdatable.OnUpdate()
         {
-            if (playerInside)
+            
+            if (playerInside != 0)
             {
                 this.distanceTravelled = playerObjectInside.GetComponent<VelocityTracker>().LastMovement.X;
-                //scrollSpeed = playerObjectInside.GetComponent<RigidBody>().LinearVelocity.X;
-                this.GameObj.Transform.Pos += new Vector3(this.distanceTravelled, 0, 0);
+                if (playerInside == Math.Sign(this.distanceTravelled))
+                {
+                    this.GameObj.Transform.Pos += new Vector3(this.distanceTravelled, 0, 0);
+                }
             }
             else
             {
-                distanceTravelled = 0.0f;
+                this.distanceTravelled = 0.0f;
             }
         }
 
@@ -56,12 +59,16 @@ namespace Duality_
             if (objectInside.GetComponent<Player>() != null)
             {
                 playerObjectInside = objectInside;
-                playerInside = true;
+
+                int screenSide = Math.Sign(playerObjectInside.Transform.Pos.X - this.GameObj.Transform.Pos.X);
+
+                playerInside = screenSide;
+
             }
         }
         void ICmpCollisionListener.OnCollisionEnd(Component sender, CollisionEventArgs args)
         {
-            playerInside = false;
+            playerInside = 0;
         }
 
         void ICmpCollisionListener.OnCollisionSolve(Component sender, CollisionEventArgs args)
@@ -77,7 +84,7 @@ namespace Duality_
             float viewportBoundLeft = camera.GetWorldViewportBounds(0.0f).TopLeft.X;
             float viewportBoundRight = camera.GetWorldViewportBounds(0.0f).TopRight.X;
 
-            float boundHeight = camera.GetWorldViewportBounds(0.0f).H;
+            float boundHeight = camera.GetWorldViewportBounds(0.0f).H * 2;
             body.ClearShapes();
 
             body.BodyType = BodyType.Static;
